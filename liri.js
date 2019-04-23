@@ -18,19 +18,25 @@ if (process.argv[2] === "concert-this") {
       var events = response.data
       for (var i = 0; i < events.length; i++) {
       console.log("Name of Venue: " + events[i].venue.name)
-      console.log("Venue Location: " + events[i].venue.country)
+      console.log("Venue Location: " + events[i].venue.city + ", " + events[i].venue.region + ", " + events[i].venue.country)
       console.log("Date of the Event: " + moment(events[i].datetime).format("MM/DD/YYYY"))
-      console.log("-----------------------------------")
+      console.log("")
       }
   })
 
   } else if (process.argv[2] === "spotify-this-song") {
-      spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+      var track = process.argv.slice(3).join(" ");
+      spotify.search({ type: 'track' , query: '' + track + '' }, function(err, data) {
 
         
           if (err) {
           return console.log('Error occurred: ' + err);
           }
+            console.log(data.tracks.items[0])
+          // console.log("Artists: " )
+          // console.log("Song Name: ")
+          // console.log("Preview: ")
+          // console.log("Album: ")
         });
 
   } else if (process.argv[2] === "movie-this") {
