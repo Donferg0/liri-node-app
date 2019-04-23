@@ -27,16 +27,16 @@ if (process.argv[2] === "concert-this") {
   } else if (process.argv[2] === "spotify-this-song") {
       var track = process.argv.slice(3).join(" ");
       spotify.search({ type: 'track' , query: '' + track + '' }, function(err, data) {
-
         
           if (err) {
           return console.log('Error occurred: ' + err);
           }
-            console.log(data.tracks.items[0])
-          // console.log("Artists: " )
-          // console.log("Song Name: ")
-          // console.log("Preview: ")
-          // console.log("Album: ")
+          var song = data.tracks.items
+
+          console.log("Artists: " + song[0].artists[0].name)
+          console.log("Song Name: " + song[0].name)
+          console.log("Preview: " + song[0].preview_url)
+          console.log("Album: " + song[0].album.name)
         });
 
   } else if (process.argv[2] === "movie-this") {
