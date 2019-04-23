@@ -8,13 +8,17 @@ var spotify = new Spotify(keys.spotify);
 
 var axios = require("axios");
 
+var moment = require("moment");
+
 
 if (process.argv[2] === "concert-this") {
   var artist 
   var queryURL = "https://rest.bandsintown.com/artists/DMX/events?app_id=codingbootcamp"
   axios.get(queryURL).then(function(response) {
     var events = response.data
-    console.log(events)
+    console.log("Name of Venue: " + events[0].venue.name)
+    console.log("Venue Location: " + events[0].venue.country)
+    console.log("Date of the Event: " + moment(events[0].venue.datetime).format("MM/DD/YYYY"))
   })
 
   } else if (process.argv[2] === "spotify-this-song") {
