@@ -19,7 +19,8 @@ if (process.argv[2] === "concert-this") {
       for (var i = 0; i < events.length; i++) {
       console.log("Name of Venue: " + events[i].venue.name)
       console.log("Venue Location: " + events[i].venue.country)
-      console.log("Date of the Event: " + moment(events[i].venue.datetime).format("MM/DD/YYYY"))
+      console.log("Date of the Event: " + moment(events[i].datetime).format("MM/DD/YYYY"))
+      console.log("-----------------------------------")
       }
   })
 
